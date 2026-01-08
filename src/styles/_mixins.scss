@@ -1,0 +1,51 @@
+// Responsive breakpoints
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+// Flexbox centering
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Container with max-width
+@mixin container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+
+  @include respond-to('lg') {
+    padding: 0 $spacing-lg;
+  }
+}
+
+// Smooth transition
+@mixin transition($property: all, $duration: $transition-base) {
+  transition: $property $duration;
+}
+
+// Card style
+@mixin card {
+  background: $bg-color;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-md;
+  padding: $spacing-md;
+}

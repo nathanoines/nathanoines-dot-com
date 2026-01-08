@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.footer {
+  padding: $spacing-lg 0;
+  background: $bg-color;
+  border-top: 1px solid rgba($text-color, 0.1);
+
+  &__container {
+    @include container;
+    text-align: center;
+  }
+
+  &__text {
+    color: $text-light;
+    font-size: $font-size-sm;
+    margin: 0;
+  }
+}

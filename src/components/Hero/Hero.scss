@@ -1,0 +1,81 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.hero {
+  padding: $spacing-2xl 0 4rem;
+  background: linear-gradient(135deg, $bg-light 0%, lighten($bg-color, 1%) 100%);
+  position: relative;
+  overflow: hidden;
+
+  // Subtle decorative element
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba($accent-color, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  &__container {
+    @include container;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__content {
+    max-width: 750px;
+  }
+
+  &__title {
+    font-size: $font-size-3xl;
+    font-weight: 800;
+    color: $text-color;
+    margin-bottom: $spacing-lg;
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+
+    // Accent underline
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, $accent-color, $accent-hover);
+      border-radius: 2px;
+    }
+
+    @include respond-to('md') {
+      font-size: 3rem;
+    }
+
+    @include respond-to('lg') {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__description {
+    font-size: $font-size-lg;
+    line-height: 1.9;
+    color: $text-light;
+    margin-bottom: $spacing-md;
+    margin-top: $spacing-lg;
+
+    &:first-of-type {
+      font-size: 1.175rem;
+      color: darken($text-light, 5%);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+      font-weight: 500;
+      color: $secondary-color;
+    }
+  }
+}
