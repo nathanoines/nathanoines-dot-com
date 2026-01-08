@@ -12,7 +12,7 @@ export function About() {
   useEffect(() => {
     const fetchPlayerData = async () => {
       try {
-        const url = `/api/ifpa/v1/player/${PLAYER_ID}?api_key=${IFPA_API_KEY}`;
+        const url = `/api/ifpa/player/${PLAYER_ID}?api_key=${IFPA_API_KEY}`;
         console.log('Fetching from:', url);
 
         const response = await fetch(url);
@@ -27,7 +27,10 @@ export function About() {
 
         const data = await response.json();
         console.log('Player data:', data);
-        setPlayerData(data);
+
+        // The current API returns data nested under player[0]
+        const playerInfo = data.player?.[0];
+        setPlayerData(playerInfo);
         setLoading(false);
       } catch (err) {
         console.error('Fetch error:', err);
@@ -61,7 +64,8 @@ export function About() {
     );
   }
 
-  const stats = playerData?.player_stats;
+  // Current API nests stats under system.open
+  const stats = playerData?.player_stats?.system?.open;
 
   return (
     <section className="about">
@@ -93,11 +97,11 @@ export function About() {
                 <div className="about__stat">
                   <div className="about__stat-label">World Ranking</div>
                   <div className="about__stat-value">
-                    #{parseInt(stats.current_wppr_rank).toLocaleString()}
+                    #{parseInt(stats.current_rank).toLocaleString()}
                   </div>
-                  {stats.last_month_rank && stats.last_month_rank !== stats.current_wppr_rank && (
+                  {stats.last_month_rank && stats.last_month_rank !== stats.current_rank && (
                     <div className="about__stat-change">
-                      {parseInt(stats.last_month_rank) > parseInt(stats.current_wppr_rank) ? '↑' : '↓'}
+                      {parseInt(stats.last_month_rank) > parseInt(stats.current_rank) ? '↑' : '↓'}
                       {' '}from #{parseInt(stats.last_month_rank).toLocaleString()}
                     </div>
                   )}
@@ -106,7 +110,7 @@ export function About() {
                 <div className="about__stat">
                   <div className="about__stat-label">WPPR Points</div>
                   <div className="about__stat-value">
-                    {parseFloat(stats.current_wppr_value).toFixed(2)}
+                    {parseFloat(stats.current_points).toFixed(2)}
                   </div>
                 </div>
 
