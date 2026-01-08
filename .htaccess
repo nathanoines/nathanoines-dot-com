@@ -3,13 +3,13 @@ AddType application/javascript .js
 AddType text/css .css
 AddType image/svg+xml .svg
 
-# Proxy IFPA API requests
+# Proxy IFPA API requests through PHP
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Proxy /api/ifpa requests to the actual IFPA API
+  # Capture /api/ifpa requests and route to PHP proxy
   RewriteCond %{REQUEST_URI} ^/api/ifpa/(.*)$
-  RewriteRule ^api/ifpa/(.*)$ https://api.ifpapinball.com/$1 [P,L]
+  RewriteRule ^api/ifpa/(.*)$ /api-proxy.php?path=$1&%{QUERY_STRING} [L]
 </IfModule>
 
 # Optional: Enable gzip compression
