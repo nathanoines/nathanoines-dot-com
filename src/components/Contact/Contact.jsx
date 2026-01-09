@@ -6,8 +6,7 @@ export function Contact() {
       <div className="contact__container">
         <h2 className="contact__title">Get In Touch</h2>
         <p className="contact__description">
-          I'm always interested in new opportunities and collaborations.
-          Feel free to reach out!
+          I'm always interested in new opportunities and collaborations. Feel free to reach&nbsp;out!
         </p>
         <div className="contact__links">
           <a

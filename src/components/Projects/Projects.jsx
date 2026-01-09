@@ -9,6 +9,7 @@ export function Projects() {
         'Full-stack website for a non-profit organization dedicated to preserving railroad history. Features include events calendar, equipment roster, artifact collection, membership management, donation processing, and more.',
       technologies: ['Foundation', 'PHP', 'Node.js', 'MySQL'],
       link: 'https://arizonarailwaymuseum.org/',
+      github: 'https://github.com/nathanoines/arizona-railway-museum',
     },
     {
       title: 'Portfolio Website',
