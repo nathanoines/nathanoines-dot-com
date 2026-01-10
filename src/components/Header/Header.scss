@@ -9,10 +9,15 @@
   &__container {
     @include container;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: $spacing-md;
+    gap: $spacing-sm;
+
+    @include respond-to('sm') {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: $spacing-md;
+    }
   }
 
   &__name {
@@ -29,7 +34,14 @@
   &__nav {
     display: flex;
     align-items: center;
-    gap: $spacing-md;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: $spacing-xs $spacing-sm;
+
+    @include respond-to('sm') {
+      flex-wrap: nowrap;
+      gap: $spacing-md;
+    }
   }
 
   &__link {
@@ -41,8 +53,9 @@
       color: $accent-color;
     }
 
-    &--external {
-      font-size: $font-size-sm;
+    &--icon {
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -50,6 +63,5 @@
     width: 1px;
     height: 1rem;
     background-color: rgba($text-color, 0.2);
-    margin: 0 $spacing-xs;
   }
 }
