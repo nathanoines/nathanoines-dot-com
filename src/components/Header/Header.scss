@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .header {
   padding: $spacing-lg 0;
@@ -28,6 +28,7 @@
 
   &__nav {
     display: flex;
+    align-items: center;
     gap: $spacing-md;
   }
 
@@ -39,5 +40,16 @@
     &:hover {
       color: $accent-color;
     }
+
+    &--external {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 1rem;
+    background-color: rgba($text-color, 0.2);
+    margin: 0 $spacing-xs;
   }
 }

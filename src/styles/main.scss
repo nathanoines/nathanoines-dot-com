@@ -1,6 +1,6 @@
-// Import variables and mixins
-@import 'variables';
-@import 'mixins';
+@use 'sass:color';
+@use 'variables' as *;
+@use 'mixins' as *;
 
 // Global styles
 * {
@@ -48,7 +48,7 @@ a {
   @include transition(color);
 
   &:hover {
-    color: darken($primary-color, 10%);
+    color: color.adjust($primary-color, $lightness: -10%);
   }
 }
 

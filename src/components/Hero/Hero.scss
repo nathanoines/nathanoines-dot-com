@@ -1,9 +1,10 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use 'sass:color';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .hero {
   padding: $spacing-2xl 0 4rem;
-  background: linear-gradient(135deg, $bg-light 0%, lighten($bg-color, 1%) 100%);
+  background: linear-gradient(135deg, $bg-light 0%, color.adjust($bg-color, $lightness: 1%) 100%);
   position: relative;
   overflow: hidden;
 
@@ -69,7 +70,7 @@
 
     &:first-of-type {
       font-size: 1.175rem;
-      color: darken($text-light, 5%);
+      color: color.adjust($text-light, $lightness: -5%);
     }
 
     &:last-child {

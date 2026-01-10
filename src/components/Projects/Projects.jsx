@@ -21,7 +21,7 @@ export function Projects() {
   ];
 
   return (
-    <section className="projects">
+    <section id="projects" className="projects">
       <div className="projects__container">
         <h2 className="projects__title">Featured Projects</h2>
         <div className="projects__grid">

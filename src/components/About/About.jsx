@@ -4,6 +4,13 @@ import './About.scss';
 const IFPA_API_KEY = 'dbb1db78a643351f4eb9db5ac38fa0b9';
 const PLAYER_ID = '63890';
 
+function getOrdinal(n) {
+  const num = parseInt(n);
+  const suffix = ['th', 'st', 'nd', 'rd'];
+  const v = num % 100;
+  return num + (suffix[(v - 20) % 10] || suffix[v] || suffix[0]);
+}
+
 export function About() {
   const [playerData, setPlayerData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -44,7 +51,7 @@ export function About() {
 
   if (loading) {
     return (
-      <section className="about">
+      <section id="about" className="about">
         <div className="about__container">
           <h2 className="about__title">About Me</h2>
           <div className="about__loading">Loading pinball stats...</div>
@@ -55,7 +62,7 @@ export function About() {
 
   if (error) {
     return (
-      <section className="about">
+      <section id="about" className="about">
         <div className="about__container">
           <h2 className="about__title">About Me</h2>
           <div className="about__error">Unable to load pinball stats</div>
@@ -68,7 +75,7 @@ export function About() {
   const stats = playerData?.player_stats?.system?.open;
 
   return (
-    <section className="about">
+    <section id="about" className="about">
       <div className="about__container">
         <h2 className="about__title">About Me</h2>
 
@@ -127,10 +134,10 @@ export function About() {
                 <div className="about__stat">
                   <div className="about__stat-label">Tournaments Played</div>
                   <div className="about__stat-value">
-                    {stats.total_active_events}
+                    {stats.total_events_all_time}
                   </div>
                   <div className="about__stat-detail">
-                    {stats.best_finish && `Best finish: ${stats.best_finish}`}
+                    {stats.best_finish && `Best finish: ${getOrdinal(stats.best_finish)}`}
                   </div>
                 </div>
               </div>

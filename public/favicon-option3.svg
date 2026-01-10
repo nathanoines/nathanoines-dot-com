@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <circle cx="16" cy="16" r="15" fill="#2c3e50"/>
+  <text x="16" y="20" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#f7f3ed" text-anchor="middle" letter-spacing="-0.5">NJO</text>
+  <circle cx="16" cy="16" r="15" fill="none" stroke="#e67e22" stroke-width="2"/>
+</svg>
