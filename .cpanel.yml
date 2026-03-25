@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/nathanoines/public_html
+    - /bin/cp .htaccess $DEPLOYPATH/
+    - /bin/cp api-proxy.php $DEPLOYPATH/
+    - cd /home/nathanoines/nathanoines-dot-com && npm install --production=false && npm run build
+    - /bin/cp -r /home/nathanoines/nathanoines-dot-com/dist/* $DEPLOYPATH/
