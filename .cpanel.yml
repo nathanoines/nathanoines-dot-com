@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - export PATH=/home/nathanoines/.nvm/versions/node/v24.12.0/bin:$PATH && cd /home/nathanoines/public_html && npm install && npm run build
+    - /bin/bash /home/nathanoines/public_html/deploy.sh
