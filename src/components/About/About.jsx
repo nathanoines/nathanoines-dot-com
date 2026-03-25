@@ -20,27 +20,17 @@ export function About() {
     const fetchPlayerData = async () => {
       try {
         const url = `/api/ifpa/player/${PLAYER_ID}?api_key=${IFPA_API_KEY}`;
-        console.log('Fetching from:', url);
-
         const response = await fetch(url);
-        console.log('Response status:', response.status);
-        console.log('Response ok:', response.ok);
 
         if (!response.ok) {
-          const errorText = await response.text();
-          console.error('Error response:', errorText);
           throw new Error(`Failed to fetch player data: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log('Player data:', data);
-
-        // The current API returns data nested under player[0]
         const playerInfo = data.player?.[0];
         setPlayerData(playerInfo);
         setLoading(false);
       } catch (err) {
-        console.error('Fetch error:', err);
         setError(err.message);
         setLoading(false);
       }
