@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - /bin/bash /home/nathanoines/public_html/deploy.sh
+    - /bin/cp -r /home/nathanoines/public_html/dist/* /home/nathanoines/public_html/

@@ -66,10 +66,11 @@ The About component fetches competitive pinball stats from the IFPA API:
 
 ## Deployment
 
-Runs on a cPanel Apache/PHP server. Deploys via cPanel Git Version Control:
+Runs on a cPanel Apache/PHP server. The repo is cloned directly into `/home/nathanoines/public_html`.
 
-1. Push to `origin/main` on GitHub
-2. Pull from cPanel Git Version Control (or it auto-deploys)
-3. `.cpanel.yml` handles the rest: `npm install`, `npm run build`, and copies `dist/` contents into `public_html`
-
-The repo is cloned directly into `/home/nathanoines/public_html`. The `.htaccess` and `api-proxy.php` are already in place since they're in the repo.
+**Deploy process:**
+1. Run `npm run build` locally
+2. Commit the `dist/` folder (it's tracked in git — cPanel's deploy runner can't build due to Wasm memory limits)
+3. Push to `origin/main`
+4. Pull from cPanel Git Version Control + Deploy HEAD Commit
+5. `.cpanel.yml` copies `dist/` contents into `public_html`
