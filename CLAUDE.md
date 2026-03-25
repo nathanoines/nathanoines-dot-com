@@ -70,4 +70,6 @@ Runs on a cPanel Apache/PHP server. Deploys via cPanel Git Version Control:
 
 1. Push to `origin/main` on GitHub
 2. Pull from cPanel Git Version Control (or it auto-deploys)
-3. `.cpanel.yml` handles the rest: `npm install`, `npm run build`, and copies `dist/`, `.htaccess`, and `api-proxy.php` to `/home/nathanoines/public_html`
+3. `.cpanel.yml` handles the rest: `npm install`, `npm run build`, and copies `dist/` contents into `public_html`
+
+The repo is cloned directly into `/home/nathanoines/public_html`. The `.htaccess` and `api-proxy.php` are already in place since they're in the repo.
